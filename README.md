@@ -71,6 +71,9 @@ curl -s http://localhost:3000/api/mcp \
 O servidor é stateless: cada requisição monta o servidor, responde e encerra.
 Nenhuma escrita, nenhum dado de visitante.
 
+`/llms.txt` publica o mesmo conteúdo como índice em texto para agentes que
+preferem ler antes de chamar ferramentas.
+
 ## Deploy
 
 Compatível com qualquer plataforma que rode Next.js. Defina
