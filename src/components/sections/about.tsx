@@ -82,6 +82,12 @@ export function About() {
                 </p>
               </div>
             </div>
+
+            <p className="about-mcp">
+              <span>MCP</span>
+              Este portfólio também é um servidor MCP somente leitura:{" "}
+              <code>/api/mcp</code>
+            </p>
           </div>
         </div>
       </div>

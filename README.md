@@ -1,16 +1,20 @@
-# Portfólio — rafael@arch
+# Portfólio — Rafael Guimarães Silva
 
-Portfólio interativo de **Rafael Guimarães Silva**, desenvolvedor fullstack e
-especialista em automações. A interface simula um desktop **Arch Linux com
-Hyprland**: boot, login, barra superior estilo Waybar, launcher, janelas
-flutuantes e aplicativos temáticos.
+Portfólio editorial em tema escuro para **Rafael Guimarães Silva**, supervisor
+de operações técnicas e desenvolvedor fullstack. Cases escritos como problema →
+decisão técnica → impacto, com diagramas em texto (sem prints de cliente).
+
+O site também expõe um **servidor MCP somente leitura** em `/api/mcp`, então
+qualquer agente compatível consulta perfil, cases, experiências e CV sem
+depender de scraping.
 
 ## Stack
 
-- Next.js 16 (App Router) + React 19
-- TypeScript
+- Next.js 16 (App Router, Turbopack)
+- React 19 + TypeScript
 - Tailwind CSS 4
 - Bun
+- `@modelcontextprotocol/sdk` (transporte Streamable HTTP, modo stateless)
 
 ## Rodando localmente
 
@@ -30,32 +34,44 @@ bun start   # serve o build
 bun lint    # ESLint
 ```
 
-## O que tem no desktop
-
-- **Sobre mim** — trajetória, especialidades e impacto.
-- **Projetos** — detalhes de problema, decisão técnica e impacto.
-- **pacman -Q** — stack como pacotes instalados.
-- **Terminal** — comandos como `help`, `neofetch`, `pacman` e `panic`.
-- **Launcher** — busca de aplicativos estilo rofi.
-- **Campo Minado** e **Lixeira** — easter eggs.
-
-Atalhos: `Super + Enter` abre o terminal, `Super + Q` fecha a janela em foco,
-`Super + E` abre os projetos e `Super + D` abre o launcher. `Esc` também fecha
-a janela em foco.
-
 ## Estrutura
 
 ```text
 src/
-  app/                 layout, metadata, CSS global
+  app/
+    api/mcp/           servidor MCP (JSON-RPC over HTTP)
+    projetos/[slug]/   case pages + Open Graph por case
+    cv/                currículo print-first
   components/
-    apps/              conteúdo de cada aplicativo
-    desktop/           shell, janelas, barra, boot e login
-    icons/             ícones SVG
-  lib/                 dados do portfólio, comandos e window manager
+    sections/          hero, trabalho, experiência, stack, sobre, contato
+    ui/                primitivos (heading, tag)
+  lib/
+    content.ts         todo o conteúdo editorial tipado
+    site.ts            identidade, contatos e navegação
 ```
+
+Conteúdo, cases e currículo vivem em `src/lib/content.ts`. Alterar texto não
+exige mexer em componente.
+
+## Servidor MCP
+
+Endpoint: `POST /api/mcp` com `Accept: application/json, text/event-stream`.
+
+Ferramentas: `get_profile`, `list_projects`, `get_project`, `get_experience`,
+`get_skills`, `get_cv`, `search_content`.
+
+```bash
+curl -s http://localhost:3000/api/mcp \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json, text/event-stream" \
+  -d '{"jsonrpc":"2.0","id":1,"method":"tools/call",
+       "params":{"name":"get_project","arguments":{"slug":"crm-rag"}}}'
+```
+
+O servidor é stateless: cada requisição monta o servidor, responde e encerra.
+Nenhuma escrita, nenhum dado de visitante.
 
 ## Deploy
 
-O projeto é compatível com qualquer plataforma que rode Next.js. Defina
+Compatível com qualquer plataforma que rode Next.js. Defina
 `NEXT_PUBLIC_SITE_URL` com a URL pública para canonical, sitemap e Open Graph.
