@@ -3,10 +3,10 @@ export const SITE = {
   name: "Rafael Guimarães Silva",
   firstName: "Rafael",
   initials: "RG",
-  role: "Supervisor de Operações Técnicas & Desenvolvedor Fullstack",
+  role: "Supervisor de Operações Técnicas & Desenvolvedor Fullstack Pleno",
   shortRole: "Operação, automação e desenvolvimento fullstack",
   description:
-    "Portfólio de Rafael Guimarães Silva, supervisor de operações técnicas e desenvolvedor fullstack em Salvador. Automação com n8n, CRM com RAG, GLPI e integrações de PDV.",
+    "Portfólio de Rafael Guimarães Silva, supervisor de operações técnicas e desenvolvedor fullstack pleno em Salvador. PHP/Laravel, Node.js/TypeScript, automação com n8n, CRM com RAG, GLPI e TEF em Linux.",
   email: "rafaelguimaraesgv@hotmail.com",
   phone: "(33) 99118-5004",
   phoneHref: "tel:+5533991185004",

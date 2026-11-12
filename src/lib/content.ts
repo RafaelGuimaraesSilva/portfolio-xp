@@ -1,7 +1,7 @@
 export const HERO = {
   eyebrow: "Salvador, BA · disponível para novas posições",
   title: ["Mantenho sistemas críticos de pé", "e tiro o trabalho manual do caminho."],
-  role: "Supervisor de Operações Técnicas & Desenvolvedor Fullstack",
+  role: "Supervisor de Operações Técnicas & Desenvolvedor Fullstack Pleno",
   lede: "Lidero suporte N1–N3 e construo as ferramentas internas que a operação usa todos os dias. Do CRM com RAG à homologação de TEF em Linux, o trabalho começa no problema real e termina com menos intervenção manual.",
   primaryCta: "Ver os cases",
   secondaryCta: "Currículo",
@@ -263,7 +263,7 @@ export type StackGroup = {
 export const STACK: StackGroup[] = [
   {
     area: "Back-end & IA",
-    tools: ["Node.js", "TypeScript", "Express", "PHP", "Laravel", "Python"],
+    tools: ["Node.js", "TypeScript", "Express", "PHP", "Laravel", "Zend", "Python"],
     where: "CRM, microsserviços e integrações",
   },
   {
@@ -273,7 +273,7 @@ export const STACK: StackGroup[] = [
   },
   {
     area: "Automação",
-    tools: ["n8n", "Webhooks", "REST APIs", "Postman"],
+    tools: ["n8n", "Webhooks", "REST APIs", "OAuth 2.0 / API Key", "WebSocket", "Postman"],
     where: "processos internos e integrações",
   },
   {
@@ -283,7 +283,7 @@ export const STACK: StackGroup[] = [
   },
   {
     area: "Infra & operação",
-    tools: ["Linux (Ubuntu)", "Docker", "Git/GitHub", "GLPI"],
+    tools: ["Linux (Ubuntu)", "Docker", "Git/GitHub", "GitLab", "GLPI"],
     where: "PDVs, servidores e suporte N1–N3",
   },
   {
@@ -339,7 +339,7 @@ export const CV_SKILLS = [
   {
     area: "Back-end & IA",
     tools:
-      "PHP (Laravel, GLPI), Node.js, TypeScript, Express, Python, RAG, integração de LLMs, REST APIs, webhooks",
+      "PHP (Laravel, Zend, GLPI), Node.js, TypeScript, Express, Python, RAG, integração de LLMs, REST APIs, OAuth 2.0, API Key, WebSocket, webhooks",
   },
   {
     area: "Front-end",
@@ -354,6 +354,6 @@ export const CV_SKILLS = [
   {
     area: "Liderança & infra",
     tools:
-      "Gestão de suporte N1–N3, liderança de operações de TI, Linux (Ubuntu), Docker, Git/GitHub, Scrum, Kanban",
+      "Gestão de suporte N1–N3, liderança de operações de TI, Linux (Ubuntu), Docker, Git/GitHub, GitLab, Scrum, Kanban",
   },
 ] as const;
