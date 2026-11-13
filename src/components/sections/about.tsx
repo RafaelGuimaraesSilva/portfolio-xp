@@ -46,7 +46,7 @@ export function About() {
 
             <div className="principles">
               {PRINCIPLES.map((principle, index) => (
-                <div className="principle" key={principle.title}>
+                <div className="principle reveal" key={principle.title}>
                   <span className="principle__index" aria-hidden="true">
                     {String(index + 1).padStart(2, "0")}
                   </span>

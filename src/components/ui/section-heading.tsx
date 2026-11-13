@@ -14,7 +14,7 @@ export function SectionHeading({
   aside,
 }: SectionHeadingProps) {
   return (
-    <div className="section-head">
+    <div className="section-head reveal">
       <div>
         <p className="kicker">{kicker}</p>
         <h2 id={id}>{title}</h2>

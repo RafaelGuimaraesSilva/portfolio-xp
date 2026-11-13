@@ -18,7 +18,7 @@ export function Stack() {
           }
         />
 
-        <table className="stack-table">
+        <table className="stack-table reveal">
           <thead>
             <tr>
               <th scope="col">Área</th>

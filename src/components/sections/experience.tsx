@@ -29,7 +29,7 @@ export function Experience() {
 
         <div className="exp-list">
           {EXPERIENCE.map((job) => (
-            <article className="exp-row" key={`${job.company}-${job.period}`}>
+            <article className="exp-row reveal" key={`${job.company}-${job.period}`}>
               <p
                 className={`exp-period${job.current ? " exp-period--current" : ""}`}
               >
