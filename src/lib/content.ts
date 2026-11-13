@@ -1,5 +1,5 @@
 export const HERO = {
-  eyebrow: "Salvador, BA · disponível para novas posições",
+  eyebrow: "sistemas de pé · Salvador, BA · disponível para novas posições",
   title: ["Mantenho sistemas críticos de pé", "e tiro o trabalho manual do caminho."],
   role: "Supervisor de Operações Técnicas & Desenvolvedor Fullstack Pleno",
   lede: "Lidero suporte N1–N3 e construo as ferramentas internas que a operação usa todos os dias. Do CRM com RAG à homologação de TEF em Linux, o trabalho começa no problema real e termina com menos intervenção manual.",
@@ -29,6 +29,10 @@ export type Project = {
   stack: string[];
   summary: string;
   highlight: string;
+  metric: {
+    value: string;
+    label: string;
+  };
   problem: string;
   constraints: string[];
   decision: string;
@@ -54,6 +58,10 @@ export const PROJECTS: Project[] = [
     summary:
       "CRM que responde clientes com base no histórico da operação, não em respostas genéricas.",
     highlight: "Resposta com contexto rastreável",
+    metric: {
+      value: "RAG",
+      label: "resposta com contexto rastreável, em produção no CRM interno",
+    },
     problem:
       "O time de suporte respondia as mesmas dúvidas várias vezes por dia. O conhecimento estava espalhado entre chamados, documentos e a cabeça das pessoas, e cada atendimento começava do zero.",
     constraints: [
@@ -91,6 +99,10 @@ export const PROJECTS: Project[] = [
     summary:
       "Workflows que tiraram do manual a geração de cards de estampagem e quotes.",
     highlight: "+30% nas entregas do setor",
+    metric: {
+      value: "+30%",
+      label: "nas entregas do setor de estampas",
+    },
     problem:
       "O setor de estampas montava cards com logos de clientes à mão. Era repetitivo, consumia horas por semana e atrasava a entrega.",
     constraints: [
@@ -126,6 +138,10 @@ export const PROJECTS: Project[] = [
     summary:
       "Homologação do cliente TEF em Linux para migrar PDVs sem quebrar pagamento.",
     highlight: "Migração de PDVs sem parar pagamento",
+    metric: {
+      value: "0",
+      label: "paradas de pagamento durante a migração dos PDVs",
+    },
     problem:
       "O cliente TEF do provedor não tinha instalação documentada para Linux. Dependências, permissões e compatibilidade quebravam em cada máquina.",
     constraints: [
@@ -163,6 +179,10 @@ export const PROJECTS: Project[] = [
     summary:
       "Serviços pequenos para ligar CRM, ERP e PDVs sem depender de processo manual.",
     highlight: "Integrações sem intervenção manual",
+    metric: {
+      value: "0",
+      label: "etapas manuais nas integrações CRM ↔ ERP ↔ PDV",
+    },
     problem:
       "Clientes dependiam de intervenção manual e suporte para concluir operações entre sistemas.",
     constraints: [
@@ -186,6 +206,10 @@ export const PROJECTS: Project[] = [
     summary:
       "Customizações e regras de negócio no GLPI para a operação de suporte.",
     highlight: "Regras da operação dentro do GLPI",
+    metric: {
+      value: "GLPI",
+      label: "regras da operação dentro do sistema, sem sair dele",
+    },
     problem:
       "Fluxos de chamados e regras da operação não cabiam no GLPI de fábrica; o time preenchia e conferia coisas à mão.",
     constraints: [

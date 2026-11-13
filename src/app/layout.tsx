@@ -3,6 +3,7 @@ import { Bricolage_Grotesque, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { PROJECTS } from "@/lib/content";
 import { SITE } from "@/lib/site";
 
 const bricolage = Bricolage_Grotesque({
@@ -41,7 +42,12 @@ export const metadata: Metadata = {
     "Salvador Bahia",
     "portfólio",
   ],
-  alternates: { canonical: "/" },
+  alternates: {
+    canonical: "/",
+    types: {
+      "text/plain": "/llms.txt",
+    },
+  },
   category: "technology",
   openGraph: {
     type: "website",
@@ -72,7 +78,6 @@ export const viewport: Viewport = {
 };
 
 const personSchema = {
-  "@context": "https://schema.org",
   "@type": "Person",
   name: SITE.name,
   url: SITE.url,
@@ -100,6 +105,30 @@ const personSchema = {
   },
 };
 
+const websiteSchema = {
+  "@type": "WebSite",
+  name: SITE.name,
+  url: SITE.url,
+  inLanguage: "pt-BR",
+  author: { "@type": "Person", name: SITE.name },
+};
+
+const caseListSchema = {
+  "@type": "ItemList",
+  name: "Cases",
+  itemListElement: PROJECTS.map((project, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    name: project.name,
+    url: `${SITE.url}/projetos/${project.slug}`,
+  })),
+};
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [personSchema, websiteSchema, caseListSchema],
+};
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
@@ -115,7 +144,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <SiteFooter />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
       </body>
     </html>

@@ -61,6 +61,11 @@ export default async function ProjectPage({ params }: Props) {
             <h1 className="case-title">{project.name}</h1>
             <p className="case-summary">{project.summary}</p>
 
+            <div className="case-stat" role="note" aria-label="Resultado em destaque">
+              <span className="case-stat__value">{project.metric.value}</span>
+              <span className="case-stat__label">{project.metric.label}</span>
+            </div>
+
             <div className="case-meta">
               <div className="case-meta__item">
                 <span className="case-meta__label">Ano</span>
