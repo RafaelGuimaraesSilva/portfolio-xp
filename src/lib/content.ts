@@ -1,5 +1,5 @@
 export const HERO = {
-  eyebrow: "sistemas de pé · Salvador, BA · disponível para novas posições",
+  eyebrow: "Salvador, BA · disponível para novas posições",
   title: ["Mantenho sistemas críticos de pé", "e tiro o trabalho manual do caminho."],
   role: "Supervisor de Operações Técnicas & Desenvolvedor Fullstack Pleno",
   lede: "Lidero suporte N1–N3 e construo as ferramentas internas que a operação usa todos os dias. De pipelines de RAG a automações orquestradas em n8n e agentes que leem este portfólio via MCP, o trabalho começa no problema real e termina sem intervenção manual.",
