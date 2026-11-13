@@ -271,7 +271,12 @@ svg {
   transition:
     background-color 160ms ease,
     border-color 160ms ease,
-    color 160ms ease;
+    color 160ms ease,
+    transform 160ms ease-out;
+}
+
+.button:active {
+  transform: scale(0.97);
 }
 
 .button:hover {
@@ -314,8 +319,10 @@ svg {
   transition: transform 180ms var(--ease);
 }
 
-.button:hover .button__arrow {
-  transform: translateX(3px);
+@media (hover: hover) and (pointer: fine) {
+  .button:hover .button__arrow {
+    transform: translateX(3px);
+  }
 }
 
 /* Hero */
@@ -604,14 +611,12 @@ svg {
   border-bottom: 1px solid var(--line);
   transition:
     background-color 200ms var(--ease),
-    padding 200ms var(--ease),
     box-shadow 200ms var(--ease);
 }
 
 .work-row:hover,
 .work-row:focus-visible {
   background: var(--surface-2);
-  padding-inline: 1.25rem;
   box-shadow: inset 2px 0 0 var(--accent);
 }
 
@@ -674,10 +679,12 @@ svg {
     color 180ms var(--ease);
 }
 
-.work-row:hover .work-row__arrow,
-.work-row:focus-visible .work-row__arrow {
-  color: var(--accent-text);
-  transform: translate(3px, -3px);
+@media (hover: hover) and (pointer: fine) {
+  .work-row:hover .work-row__arrow,
+  .work-row:focus-visible .work-row__arrow {
+    color: var(--accent-text);
+    transform: translate(3px, -3px);
+  }
 }
 
 .work-more {
@@ -1232,6 +1239,7 @@ svg {
   display: grid;
   gap: 0.55rem;
   max-width: 68ch;
+  counter-reset: case-count;
 }
 
 .case-list li {
@@ -1244,19 +1252,20 @@ svg {
 }
 
 .case-list li::before {
-  content: counter(list-item, decimal-leading-zero);
+  counter-increment: case-count;
+  content: counter(case-count, decimal-leading-zero);
   font-family: var(--font-mono), ui-monospace, monospace;
   font-size: 0.62rem;
   color: var(--subtle);
   padding-top: 0.3rem;
 }
 
-.case-impact {
+p.case-impact {
   border-left: 2px solid var(--accent);
   padding-left: 1rem;
-  font-size: clamp(1.05rem, 1.7vw, 1.25rem) !important;
-  line-height: 1.55 !important;
-  color: var(--text) !important;
+  font-size: clamp(1.05rem, 1.7vw, 1.25rem);
+  line-height: 1.55;
+  color: var(--text);
   font-weight: 500;
 }
 
@@ -1609,6 +1618,8 @@ svg {
     padding-bottom: 0.15rem;
     border-top: 1px solid var(--line);
     padding-top: 0.5rem;
+    mask-image: linear-gradient(90deg, #000 88%, transparent 100%);
+    -webkit-mask-image: linear-gradient(90deg, #000 88%, transparent 100%);
   }
 
   .header-cv {
@@ -1652,11 +1663,6 @@ svg {
     grid-template-columns: 1.6rem minmax(0, 1fr) 1.25rem;
     padding-inline: 0;
     gap: 0.25rem 0.75rem;
-  }
-
-  .work-row:hover,
-  .work-row:focus-visible {
-    padding-inline: 0.75rem;
   }
 
   .work-row__index {
