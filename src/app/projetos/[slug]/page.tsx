@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowUpRight } from "@/components/icons";
 import { PipelineRows } from "@/components/pipeline";
+import { CaseStatValue } from "@/components/case-stat-value";
 import { Tag } from "@/components/ui/tag";
 import { PROJECTS, getProject } from "@/lib/content";
 import { SITE } from "@/lib/site";
@@ -61,8 +62,8 @@ export default async function ProjectPage({ params }: Props) {
             <h1 className="case-title">{project.name}</h1>
             <p className="case-summary">{project.summary}</p>
 
-            <div className="case-stat" role="note" aria-label="Resultado em destaque">
-              <span className="case-stat__value">{project.metric.value}</span>
+            <div className="case-stat reveal" role="note" aria-label="Resultado em destaque">
+              <CaseStatValue value={project.metric.value} />
               <span className="case-stat__label">{project.metric.label}</span>
             </div>
 
@@ -93,7 +94,7 @@ export default async function ProjectPage({ params }: Props) {
 
         <div className="container case-body">
           <div className="case-content">
-            <section className="case-section">
+            <section className="case-section reveal">
               <h2>
                 <span className="case-section__index" aria-hidden="true">
                   01
@@ -103,7 +104,7 @@ export default async function ProjectPage({ params }: Props) {
               <p>{project.problem}</p>
             </section>
 
-            <section className="case-section">
+            <section className="case-section reveal">
               <h2>
                 <span className="case-section__index" aria-hidden="true">
                   02
@@ -117,7 +118,7 @@ export default async function ProjectPage({ params }: Props) {
               </ul>
             </section>
 
-            <section className="case-section">
+            <section className="case-section reveal">
               <h2>
                 <span className="case-section__index" aria-hidden="true">
                   03
@@ -128,7 +129,7 @@ export default async function ProjectPage({ params }: Props) {
             </section>
 
             {project.diagram ? (
-              <section className="case-section">
+              <section className="case-section reveal">
                 <h2>
                   <span className="case-section__index" aria-hidden="true">
                     04
@@ -146,7 +147,7 @@ export default async function ProjectPage({ params }: Props) {
               </section>
             ) : null}
 
-            <section className="case-section">
+            <section className="case-section reveal">
               <h2>
                 <span className="case-section__index" aria-hidden="true">
                   {resultIndex}
@@ -156,7 +157,7 @@ export default async function ProjectPage({ params }: Props) {
               <p className="case-impact">{project.impact}</p>
             </section>
 
-            <section className="case-section">
+            <section className="case-section reveal">
               <h2>
                 <span className="case-section__index" aria-hidden="true">
                   {learnedIndex}
@@ -167,7 +168,7 @@ export default async function ProjectPage({ params }: Props) {
             </section>
           </div>
 
-          <aside className="case-aside">
+          <aside className="case-aside reveal">
             <h2>Ficha técnica</h2>
             <p>
               {project.internal
