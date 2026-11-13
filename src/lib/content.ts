@@ -2,7 +2,7 @@ export const HERO = {
   eyebrow: "sistemas de pé · Salvador, BA · disponível para novas posições",
   title: ["Mantenho sistemas críticos de pé", "e tiro o trabalho manual do caminho."],
   role: "Supervisor de Operações Técnicas & Desenvolvedor Fullstack Pleno",
-  lede: "Lidero suporte N1–N3 e construo as ferramentas internas que a operação usa todos os dias. Do CRM com RAG à homologação de TEF em Linux, o trabalho começa no problema real e termina com menos intervenção manual.",
+  lede: "Lidero suporte N1–N3 e construo as ferramentas internas que a operação usa todos os dias. De pipelines de RAG a automações orquestradas em n8n e agentes que leem este portfólio via MCP, o trabalho começa no problema real e termina sem intervenção manual.",
   primaryCta: "Ver os cases",
   secondaryCta: "Currículo",
   note: "3 cases detalhados · arquitetura e decisões, sem vitrine",
@@ -221,6 +221,34 @@ export const PROJECTS: Project[] = [
     impact: "Atendimento mais rápido e dados confiáveis para diagnóstico.",
     learned: "Customizar sem documentar é criar dívida com nome bonito.",
     internal: true,
+  },
+  {
+    slug: "portfolio-mcp",
+    name: "Portfólio como servidor MCP",
+    shortName: "Portfólio MCP",
+    year: "2026",
+    role: "Arquitetura e implementação",
+    stack: ["Next.js", "MCP", "TypeScript", "JSON-RPC", "Streamable HTTP"],
+    summary:
+      "Este portfólio também é um servidor MCP: qualquer agente consulta perfil, cases e CV diretamente.",
+    highlight: "Agentes leem o portfólio sem scraping",
+    metric: {
+      value: "7",
+      label: "ferramentas MCP somente leitura expostas ao agente",
+    },
+    problem:
+      "Portfólios são escritos para humanos: agentes precisam raspar HTML, errar seletor e reprocessar a página a cada pergunta. O contexto existia, mas não era acessível de forma estruturada e confiável.",
+    constraints: [
+      "Somente leitura: o agente não pode alterar conteúdo.",
+      "Stateless: cada requisição monta e encerra o servidor, sem sessão nem estado compartilhado.",
+      "Mesma fonte dos dados da página, sem uma segunda cópia dos fatos.",
+    ],
+    decision:
+      "Implementei um servidor MCP em /api/mcp com @modelcontextprotocol/sdk sobre Streamable HTTP stateless. Sete tools (get_profile, list_projects, get_project, get_experience, get_skills, get_cv, search_content) leem o mesmo content.ts do site, e /llms.txt publica o mesmo índice em texto para agentes que preferem ler antes de chamar ferramentas.",
+    impact:
+      "Qualquer agente compatível com MCP consulta Rafael sem scraping, com respostas idênticas às páginas e sem expor dados além do que o site já expõe.",
+    learned:
+      "Agentes bem tratados param de alucinar: dar a ferramenta certa é mais barato que instruir o modelo a adivinhar pela interface.",
   },
 ];
 

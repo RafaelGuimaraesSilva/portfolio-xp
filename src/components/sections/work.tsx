@@ -11,7 +11,7 @@ export function Work() {
         <SectionHeading
           kicker="Trabalho selecionado"
           id="work-title"
-          title="Cinco sistemas que rodam na operação."
+          title="Seis sistemas, nenhum de vitrine."
           aside={
             <>
               <p>
@@ -20,8 +20,9 @@ export function Work() {
                 resultado detalhados.
               </p>
               <p>
-                Todos são projetos internos. Dados de clientes foram omitidos; o
-                recorte técnico é real.
+                Cinco são projetos internos. O sexto é público: este portfólio,
+                que além de site é um servidor MCP somente leitura para agentes
+                de IA.
               </p>
             </>
           }
@@ -30,7 +31,7 @@ export function Work() {
         <div className="work-list">
           {PROJECTS.map((project, index) => (
             <Link
-              className="work-row"
+              className="work-row reveal"
               key={project.slug}
               href={`/projetos/${project.slug}`}
             >
