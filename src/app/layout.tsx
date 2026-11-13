@@ -139,6 +139,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <a className="skip-link" href="#conteudo">
           Pular para o conteúdo
         </a>
+        <div className="scroll-progress" aria-hidden="true" />
+        <div className="scroll-dot" aria-hidden="true" />
         <SiteHeader />
         {children}
         <SiteFooter />
